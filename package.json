@@ -1,0 +1,22 @@
+{
+  "name": "frontend-project-lvl1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "bin": {
+    "hello": "./src/bin/brain-games.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loukianen/frontend-project-lvl1.git"
+  },
+  "author": "Konstantin Lukyanenok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loukianen/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/loukianen/frontend-project-lvl1#readme"
+}
