@@ -1,14 +1,19 @@
 {
-  "name": "frontend-project-lvl1",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "lkf-frontend-project-lvl1",
+  "version": "0.1.1",
+  "description": "training",
+  "main": "beain-games.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "bin": {
-    "hello": "./src/bin/brain-games.js"
+    "brain-games": "./src/bin/brain-games.js"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/loukianen/frontend-project-lvl1.git"
@@ -18,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/loukianen/frontend-project-lvl1/issues"
   },
-  "homepage": "https://github.com/loukianen/frontend-project-lvl1#readme"
+  "homepage": "https://github.com/loukianen/frontend-project-lvl1#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  }
 }
