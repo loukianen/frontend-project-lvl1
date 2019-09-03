@@ -1,0 +1,20 @@
+##
+This repository is created and maintained by Konstantin Lukyanenok as an educational project of Hexlet.
+
+##
+
+# frontend-project-lvl1
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/afd6ce0d93f772a73e55/maintainability)](https://codeclimate.com/github/loukianen/frontend-project-lvl1/maintainability)
+
+## Setup
+
+```sh
+$ make install
+```
+
+## Run tests
+
+```sh
+$ make test
+```
