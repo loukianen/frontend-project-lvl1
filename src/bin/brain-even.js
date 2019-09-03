@@ -9,5 +9,5 @@ console.log();
 const userName = readlineSync.question('May I have your name? ');
 console.log(`Hello, ${userName}!`);
 console.log();
-const result = resultGame(0) ? `Congratulations, ${userName}!` : `Let's try again, ${userName}!`
+const result = resultGame(0) ? `Congratulations, ${userName}!` : `Let's try again, ${userName}!`;
 console.log(result);
