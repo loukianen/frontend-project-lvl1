@@ -1,16 +1,17 @@
 import readlineSync from 'readline-sync';
+import getFunction from './getFunc';
 
-const gameOne = (counter) => {
+const runGame = (gameName, counter) => {
   if (counter >= 3) return true;
-  const question = Math.round(Math.random() * 100);
-  const rigthAnswer = question % 2 === 0 ? 'yes' : 'no';
-  console.log(`Question: ${question}`);
+  const rigthAnswer = getFunction(gameName);
   const answer = readlineSync.question('Your answer: ');
   if (answer === rigthAnswer) {
     console.log('Correct!');
-    return gameOne(counter + 1);
+    console.log();
+    return runGame(gameName, counter + 1);
   }
+  console.log();
   console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rigthAnswer}'.`);
   return false;
 };
-export default gameOne;
+export default runGame;

@@ -1,6 +1,6 @@
 {
   "name": "lkf-frontend-project-lvl1",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "training",
   "main": "breain-even.js",
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "bin": {
     "brain-games": "./src/bin/brain-games.js",
-    "brain-even": "./src/bin/brain-even.js"
+    "brain-even": "./src/bin/brain-even.js",
+    "brain-calc": "./src/bin/brain-calc.js"
   },
   "files": [
     "dist"
