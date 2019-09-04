@@ -33,3 +33,6 @@ $ make brain-gcd
 ```sh
 $ make brain-progression
 ```
+## Run game: Prime
+```sh
+$ make brain-prime
