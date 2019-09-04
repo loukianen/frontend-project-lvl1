@@ -1,5 +1,6 @@
 import calc from './calc';
 import even from './even';
+import gcd from './gcd';
 
 export default (name) => {
   switch (name) {
@@ -7,6 +8,8 @@ export default (name) => {
       return calc();
     case 'even':
       return even();
+    case 'gcd':
+      return gcd();
     default:
       return null;
   }

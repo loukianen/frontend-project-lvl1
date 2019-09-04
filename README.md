@@ -10,13 +10,22 @@ This repository is created and maintained by Konstantin Lukyanenok as an educati
 [![Build Status](https://travis-ci.org/loukianen/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/loukianen/frontend-project-lvl1)
 
 ## Setup
-
 ```sh
-$ make install
+$ npm link
 ```
-
 ## Run tests
-
 ```sh
-$ make test
+$ make lint
+```
+## Run game: If the number is even
+```sh
+$ make brain-even
+```
+## Run game: Calculator
+```sh
+$ make brain-calc
+```
+## Run game: NOD
+```sh
+$ make brain-gcd
 ```
