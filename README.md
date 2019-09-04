@@ -25,7 +25,11 @@ $ make brain-even
 ```sh
 $ make brain-calc
 ```
-## Run game: NOD
+## Run game: Get common devisor
 ```sh
 $ make brain-gcd
+```
+## Run game: Progression
+```sh
+$ make brain-progression
 ```
