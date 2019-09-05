@@ -1,8 +1,8 @@
-import calc from './calc';
-import even from './even';
-import gcd from './gcd';
-import progression from './progression';
-import prime from './prime';
+import calc from './games/calc';
+import even from './games/even';
+import gcd from './games/gcd';
+import progression from './games/progression';
+import prime from './games/prime';
 
 export default (name) => {
   switch (name) {

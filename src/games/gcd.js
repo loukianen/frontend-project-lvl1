@@ -2,6 +2,10 @@ export default () => {
   const firstNumber = Math.round(Math.random() * 100);
   const secondNumber = Math.round(Math.random() * 100);
   const question = `${firstNumber} ${secondNumber}`;
+  if (firstNumber === secondNumber) {
+    console.log(`Question: ${question}`);
+    return String(firstNumber);
+  }
   const getDivisor = (divisor, greatestDivisor) => {
     if (divisor > firstNumber / 2 && divisor > secondNumber / 2) {
       console.log(`Question: ${question}`);
