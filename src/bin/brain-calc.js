@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import ave from '../ave';
+import start from '../games/calc';
 
-const description = 'What is the result of the expression?';
-ave('calc', description);
+start();

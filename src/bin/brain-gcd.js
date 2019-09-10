@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import ave from '../ave';
+import start from '../games/gcd';
 
-const description = 'Find the greatest common divisor of given numbers.';
-ave('gcd', description);
+start();

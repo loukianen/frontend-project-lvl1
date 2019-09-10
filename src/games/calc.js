@@ -1,20 +1,20 @@
+import startEngine from '../engine';
+import { cons, car, cdr } from '../pairs';
+import { getRoundRandom100 } from '../getRandom';
+import getOperandAndFunction from '../getOperAndFunc';
+
 export default () => {
-  const firstNumber = Math.round(Math.random() * 100);
-  const secondNumber = Math.round(Math.random() * 100);
-  const preOperand = Math.random();
-  let operand;
-  let answer;
-  if (preOperand < 0.33) {
-    answer = firstNumber + secondNumber;
-    operand = '+';
-  } else if (preOperand > 0.67) {
-    answer = firstNumber - secondNumber;
-    operand = '-';
-  } else {
-    answer = firstNumber * secondNumber;
-    operand = '*';
-  }
-  const question = `${firstNumber} ${operand} ${secondNumber}`;
-  console.log(`Question: ${question}`);
-  return String(answer);
+  const gameTask = 'What is the result of the expression?';
+  const numberOfCorrectAnswers = 3;
+  const getPairQuestionAnswer = () => {
+    const firstNumber = getRoundRandom100();
+    const secondNumber = getRoundRandom100();
+    const pairOperandAndFunction = getOperandAndFunction();
+    const operand = car(pairOperandAndFunction);
+    const action = cdr(pairOperandAndFunction);
+    const question = `${firstNumber} ${operand} ${secondNumber}`;
+    const correctAnswer = action(firstNumber, secondNumber); // eval(question);
+    return cons(question, correctAnswer);
+  };
+  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
 };

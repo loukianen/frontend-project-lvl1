@@ -1,8 +1,8 @@
 {
   "name": "lkf-frontend-project-lvl1",
-  "version": "1.5.0",
+  "version": "2.1.0",
   "description": "training",
-  "main": "breain-even.js",
+  "main": "default",
   "scripts": {
     "test": "jest",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -23,6 +23,10 @@
     "type": "git",
     "url": "git+https://github.com/loukianen/frontend-project-lvl1.git"
   },
+  "keywords": [
+    "Brain-games",
+    "lkf"
+  ],
   "author": "Konstantin Lukyanenok",
   "license": "ISC",
   "bugs": {
@@ -30,10 +34,10 @@
   },
   "homepage": "https://github.com/loukianen/frontend-project-lvl1#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",

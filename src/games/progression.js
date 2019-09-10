@@ -1,29 +1,29 @@
+import startEngine from '../engine';
+import { cons } from '../pairs';
+import { getRoundRandom100, getFloorRandom10 } from '../getRandom';
+
 export default () => {
-  const operand = Math.random();
-  const stopper = Math.floor(Math.random() * 10);
-  const firstNumber = Math.round(Math.random() * 10);
-  let result = '';
-  let question = '';
-  const listFunction = (val, act) => {
-    if (act < 0.33) {
-      return val + 2;
-    }
-    return act > 0.67 ? val - 2 : val * 2;
-  };
-  const getResult = (startNumber) => {
-    let acc = startNumber;
-    for (let counter = 0; counter < 10; counter += 1) {
-      if (counter === stopper) {
-        result = acc;
+  const gameTask = 'What number is missing in the progression?';
+  const numberOfCorrectAnswers = 3;
+  const getPairQuestionAnswer = () => {
+    const lengthOfProgression = 10;
+    const stepOfProgression = 2;
+    const firstElement = getRoundRandom100();
+    const hiddenElement = getFloorRandom10();
+    let question = '';
+    let correctAnswer = '';
+    let acc = firstElement;
+    for (let counter = 0; counter < lengthOfProgression; counter += 1) {
+      if (counter === hiddenElement) {
+        correctAnswer = String(acc);
         question = `${question} ..`;
-        acc = listFunction(acc, operand);
+        acc += stepOfProgression;
       } else {
         question = `${question} ${acc}`;
-        acc = listFunction(acc, operand);
+        acc += stepOfProgression;
       }
     }
-    console.log(`Question:${question}`);
-    return String(result);
+    return cons(question, correctAnswer);
   };
-  return getResult(firstNumber);
+  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
 };

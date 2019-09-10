@@ -1,18 +1,17 @@
+import startEngine from '../engine';
+import { cons } from '../pairs';
+import { getRoundRandom100 } from '../getRandom';
+import getGreatestCommonDivisor from '../getGCD';
+
 export default () => {
-  const firstNumber = Math.round(Math.random() * 100);
-  const secondNumber = Math.round(Math.random() * 100);
-  const question = `${firstNumber} ${secondNumber}`;
-  if (firstNumber === secondNumber) {
-    console.log(`Question: ${question}`);
-    return String(firstNumber);
-  }
-  const getDivisor = (divisor, greatestDivisor) => {
-    if (divisor > firstNumber / 2 && divisor > secondNumber / 2) {
-      console.log(`Question: ${question}`);
-      return String(greatestDivisor);
-    }
-    return (firstNumber % divisor === 0 && secondNumber % divisor === 0) ? getDivisor(divisor + 1,
-      divisor) : getDivisor(divisor + 1, greatestDivisor);
+  const gameTask = 'Find the greatest common divisor of given numbers.';
+  const numberOfCorrectAnswers = 3;
+  const getPairQuestionAnswer = () => {
+    const firstNumber = getRoundRandom100();
+    const secondNumber = getRoundRandom100();
+    const question = `${firstNumber} ${secondNumber}`;
+    const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
+    return cons(question, correctAnswer);
   };
-  return getDivisor(1, 0);
+  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
 };

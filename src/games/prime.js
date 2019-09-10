@@ -1,11 +1,16 @@
+import startEngine from '../engine';
+import { cons } from '../pairs';
+import { getRoundRandom100 } from '../getRandom';
+import isPrime from '../isPrime';
+
 export default () => {
-  const question = Math.round(Math.random() * 100);
-  const checkNumber = (number, divisor) => {
-    if (divisor <= number / 2) {
-      return number % divisor !== 0 ? checkNumber(number, divisor + 1) : false;
-    }
-    return true;
+  const gameTask = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const numberOfCorrectAnswers = 3;
+  const getPairQuestionAnswer = () => {
+    const numberStartChecking = 2;
+    const question = getRoundRandom100();
+    const correctAnswer = isPrime(question, numberStartChecking);
+    return cons(question, correctAnswer);
   };
-  console.log(`Question: ${question}`);
-  return checkNumber(question, 2) ? 'yes' : 'no';
+  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
 };
