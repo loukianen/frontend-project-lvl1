@@ -1,10 +1,12 @@
 import readlineSync from 'readline-sync';
-import { car, cdr } from './pairs';
+import { car, cdr } from '@hexlet/pairs';
 
-export default (gameTask, numberAnswers, getPairFunc) => {
-  const isAnswersCorrect = (counter, numAnswers, getPairF) => {
-    if (counter >= numAnswers) return true;
-    const pairQwestionAnswer = getPairF();
+export default (gameTask, game) => {
+  const correctAnswersCount = 3;
+  const getPairFuncion = game;
+  const isAnswersCorrect = (counter) => {
+    if (counter >= correctAnswersCount) return true;
+    const pairQwestionAnswer = getPairFuncion();
     const question = car(pairQwestionAnswer);
     const correctAnswer = String(cdr(pairQwestionAnswer));
     console.log(`Question: ${question}`);
@@ -12,7 +14,7 @@ export default (gameTask, numberAnswers, getPairFunc) => {
     if (answer === correctAnswer) {
       console.log('Correct!');
       console.log();
-      return isAnswersCorrect(counter + 1, numAnswers, getPairF);
+      return isAnswersCorrect(counter + 1);
     }
     console.log();
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
@@ -25,7 +27,10 @@ export default (gameTask, numberAnswers, getPairFunc) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log();
-  const result = isAnswersCorrect(0, numberAnswers, getPairFunc) ? `Congratulations, ${userName}!` : `Let's try again, ${userName}!`;
-  console.log(result);
-  console.log();
+  if (isAnswersCorrect(0) === true) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
+  }
+  return console.log();
 };

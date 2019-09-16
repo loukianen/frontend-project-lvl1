@@ -1,17 +1,27 @@
+import { cons } from '@hexlet/pairs';
+import getRandomValue from '../getRandom';
 import startEngine from '../engine';
-import { cons } from '../pairs';
-import { getRoundRandom100 } from '../getRandom';
-import getGreatestCommonDivisor from '../getGCD';
 
 export default () => {
-  const gameTask = 'Find the greatest common divisor of given numbers.';
-  const numberOfCorrectAnswers = 3;
+  const getGreatestCommonDivisor = (first, second) => {
+    if (first === second) {
+      return String(first);
+    }
+    const getDivisor = (divisor, greatestDivisor) => {
+      if (divisor > first / 2 && divisor > second / 2) {
+        return String(greatestDivisor);
+      }
+      return (first % divisor === 0 && second % divisor === 0) ? getDivisor(divisor + 1,
+        divisor) : getDivisor(divisor + 1, greatestDivisor);
+    };
+    return getDivisor(1, 0);
+  };
   const getPairQuestionAnswer = () => {
-    const firstNumber = getRoundRandom100();
-    const secondNumber = getRoundRandom100();
-    const question = `${firstNumber} ${secondNumber}`;
-    const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
+    const first = getRandomValue(0, 100);
+    const second = getRandomValue(0, 100);
+    const question = `${first} ${second}`;
+    const correctAnswer = getGreatestCommonDivisor(first, second);
     return cons(question, correctAnswer);
   };
-  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
+  return startEngine('Find the greatest common divisor of given numbers.', getPairQuestionAnswer);
 };

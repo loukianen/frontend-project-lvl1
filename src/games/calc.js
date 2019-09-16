@@ -1,20 +1,25 @@
+import { cons, car, cdr } from '@hexlet/pairs';
+import { l, random } from '@hexlet/pairs-data';
+import getRandomValue from '../getRandom';
 import startEngine from '../engine';
-import { cons, car, cdr } from '../pairs';
-import { getRoundRandom100 } from '../getRandom';
-import getOperandAndFunction from '../getOperAndFunc';
 
 export default () => {
-  const gameTask = 'What is the result of the expression?';
-  const numberOfCorrectAnswers = 3;
+  const getOperandAndFunction = () => {
+    const plus = cons('+', ((a, b) => a + b));
+    const minus = cons('-', ((a, b) => a - b));
+    const multipl = cons('*', ((a, b) => a * b));
+    const operandList = l(plus, minus, multipl);
+    return random(operandList);
+  };
   const getPairQuestionAnswer = () => {
-    const firstNumber = getRoundRandom100();
-    const secondNumber = getRoundRandom100();
+    const first = getRandomValue(0, 100);
+    const second = getRandomValue(0, 100);
     const pairOperandAndFunction = getOperandAndFunction();
     const operand = car(pairOperandAndFunction);
     const action = cdr(pairOperandAndFunction);
-    const question = `${firstNumber} ${operand} ${secondNumber}`;
-    const correctAnswer = action(firstNumber, secondNumber); // eval(question);
+    const question = `${first} ${operand} ${second}`;
+    const correctAnswer = action(first, second);
     return cons(question, correctAnswer);
   };
-  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
+  return startEngine('What is the result of the expression?', getPairQuestionAnswer);
 };

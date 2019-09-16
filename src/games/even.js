@@ -1,16 +1,16 @@
+import { cons } from '@hexlet/pairs';
+import getRandomValue from '../getRandom';
 import startEngine from '../engine';
-import { cons } from '../pairs';
-import { getRoundRandom100 } from '../getRandom';
-import isEven from '../isEven';
-
 
 export default () => {
-  const gameTask = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const numberOfCorrectAnswers = 3;
+  const getCorrectAnswer = (value) => {
+    const isEven = (valueForEven) => valueForEven % 2 === 0;
+    return isEven(value) ? 'yes' : 'no';
+  };
   const getPairQuestionAnswer = () => {
-    const question = getRoundRandom100();
-    const correctAnswer = isEven(question);
+    const question = getRandomValue(0, 100);
+    const correctAnswer = getCorrectAnswer(question);
     return cons(question, correctAnswer);
   };
-  return startEngine(gameTask, numberOfCorrectAnswers, getPairQuestionAnswer);
+  return startEngine('Answer "yes" if the number is even, otherwise answer "no".', getPairQuestionAnswer);
 };
