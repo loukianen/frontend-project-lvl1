@@ -2,26 +2,23 @@ import { cons } from '@hexlet/pairs';
 import getRandomValue from '../getRandom';
 import startEngine from '../engine';
 
-export default () => {
-  const getPairQuestionAnswer = () => {
-    const lengthOfProgression = 10;
-    const stepOfProgression = 2;
-    const firstElement = getRandomValue(0, 100);
-    const hiddenElement = getRandomValue(0, lengthOfProgression - 1);
-    let question = '';
-    let correctAnswer = '';
-    let acc = firstElement;
-    for (let counter = 0; counter < lengthOfProgression; counter += 1) {
-      if (counter === hiddenElement) {
-        correctAnswer = String(acc);
-        question = `${question} ..`;
-        acc += stepOfProgression;
-      } else {
-        question = `${question} ${acc}`;
-        acc += stepOfProgression;
-      }
+const gameRules = 'What number is missing in the progression?';
+const lengthOfProgression = 10;
+const getQuestionAnswer = () => {
+  const stepOfProgression = getRandomValue(1, 5);
+  const firstElement = getRandomValue(0, 100);
+  const positionOfHiddenElement = getRandomValue(0, lengthOfProgression - 1);
+  let question = '';
+  let correctAnswer = '';
+  for (let counter = 0; counter < lengthOfProgression; counter += 1) {
+    const start = firstElement;
+    if (counter === positionOfHiddenElement) {
+      correctAnswer = start + stepOfProgression * counter;
+      question = `${question} ..`;
+    } else {
+      question = `${question} ${start + stepOfProgression * counter}`;
     }
-    return cons(question, correctAnswer);
-  };
-  return startEngine('What number is missing in the progression?', getPairQuestionAnswer);
+  }
+  return cons(question, correctAnswer);
 };
+export default () => startEngine(gameRules, getQuestionAnswer);
