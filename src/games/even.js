@@ -2,17 +2,11 @@ import { cons } from '@hexlet/pairs';
 import getRandomValue from '../getRandom';
 import startEngine from '../engine';
 
-const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
-const isEven = (valueForEven) => valueForEven % 2 === 0;
-const getCorrectAnswer = (value) => {
-  if (isEven(value) === true) {
-    return 'yes';
-  }
-  return 'no';
-};
+const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEven = (value) => value % 2 === 0;
 const getQuestionAnswer = () => {
   const question = getRandomValue(0, 100);
-  const correctAnswer = getCorrectAnswer(question);
+  const correctAnswer = isEven(question) ? 'yes' : 'no';
   return cons(question, correctAnswer);
 };
-export default () => startEngine(gameRules, getQuestionAnswer);
+export default () => startEngine(gameDescription, getQuestionAnswer);

@@ -2,8 +2,9 @@ import { cons } from '@hexlet/pairs';
 import getRandomValue from '../getRandom';
 import startEngine from '../engine';
 
-const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const isPrime = (value) => {
+  if (value < 2) return false;
   const startCheckingPosition = 2;
   const checkValue = (valueToCheck, startDivisor) => {
     if (startDivisor <= valueToCheck / 2) {
@@ -13,15 +14,9 @@ const isPrime = (value) => {
   };
   return checkValue(value, startCheckingPosition);
 };
-const getCorrectAnswer = (valueOriginal) => {
-  if (isPrime(valueOriginal) === true) {
-    return 'yes';
-  }
-  return 'no';
-};
 const getQuestionAnswer = () => {
   const question = getRandomValue(0, 100);
-  const correctAnswer = getCorrectAnswer(question);
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
   return cons(question, correctAnswer);
 };
-export default () => startEngine(gameRules, getQuestionAnswer);
+export default () => startEngine(gameDescription, getQuestionAnswer);

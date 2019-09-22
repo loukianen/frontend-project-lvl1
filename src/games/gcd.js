@@ -2,8 +2,8 @@ import { cons } from '@hexlet/pairs';
 import getRandomValue from '../getRandom';
 import startEngine from '../engine';
 
-const gamesRules = 'Find the greatest common divisor of given numbers.';
-const getCorrectAnswer = (first, second) => {
+const gamesDescription = 'Find the greatest common divisor of given numbers.';
+const getGcd = (first, second) => {
   if (first === second) {
     return (first);
   }
@@ -20,7 +20,7 @@ const getQuestionAnswer = () => {
   const first = getRandomValue(0, 100);
   const second = getRandomValue(0, 100);
   const question = `${first} ${second}`;
-  const correctAnswer = getCorrectAnswer(first, second);
+  const correctAnswer = getGcd(first, second);
   return cons(question, correctAnswer);
 };
-export default () => startEngine(gamesRules, getQuestionAnswer);
+export default () => startEngine(gamesDescription, getQuestionAnswer);
