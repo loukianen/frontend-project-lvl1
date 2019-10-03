@@ -1,2 +1,1 @@
-export default (lowerBound, upperBound) => Math.round(Math.random() * (upperBound
-  - lowerBound) + lowerBound);
+export default (min, max) => Math.round(Math.random() * (max - min) + min);

@@ -2,7 +2,12 @@ import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
 const correctAnswersCount = 3;
-export default (gameDescription, game) => {
+let counter = 0;
+let questionAnswer;
+let question;
+let correctAnswer;
+let answer;
+export default (gameDescription, getQuestionAnswer) => {
   console.log();
   console.log('Welcome to the Brain Games!');
   console.log(gameDescription);
@@ -10,21 +15,22 @@ export default (gameDescription, game) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log();
-  const getGameResult = (counter) => {
-    if (counter >= correctAnswersCount) return console.log(`Congratulations, ${userName}!`);
-    const qwestionAnswer = game();
-    const question = car(qwestionAnswer);
-    const correctAnswer = String(cdr(qwestionAnswer));
+  while (counter < correctAnswersCount) {
+    questionAnswer = getQuestionAnswer();
+    question = car(questionAnswer);
+    correctAnswer = String(cdr(questionAnswer));
     console.log(`Question: ${question}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      console.log();
-      return getGameResult(counter + 1);
-    }
+    answer = readlineSync.question('Your answer: ');
+    if (answer !== correctAnswer) break;
+    console.log('Correct!');
+    console.log();
+    counter += 1;
+  }
+  if (counter === correctAnswersCount) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
     console.log();
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    return console.log(`Let's try again, ${userName}!`);
-  };
-  getGameResult(0);
+    console.log(`Let's try again, ${userName}!`);
+  }
 };
