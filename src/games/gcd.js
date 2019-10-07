@@ -20,7 +20,7 @@ const getQuestionAnswer = () => {
   const first = getRandomValue(0, 100);
   const second = getRandomValue(0, 100);
   const question = `${first} ${second}`;
-  const correctAnswer = getGcd(first, second);
+  const correctAnswer = String(getGcd(first, second));
   return cons(question, correctAnswer);
 };
 export default () => startEngine(gamesDescription, getQuestionAnswer);

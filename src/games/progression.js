@@ -8,7 +8,7 @@ const getQuestionAnswer = () => {
   const stepOfProgression = getRandomValue(1, 5);
   const firstElement = getRandomValue(0, 100);
   const hiddenElementPosition = getRandomValue(0, lengthOfProgression - 1);
-  const correctAnswer = firstElement + stepOfProgression * hiddenElementPosition;
+  const correctAnswer = String(firstElement + stepOfProgression * hiddenElementPosition);
   let question = '';
   for (let counter = 0; counter < lengthOfProgression; counter += 1) {
     const start = firstElement;

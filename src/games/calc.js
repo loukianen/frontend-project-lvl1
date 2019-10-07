@@ -17,7 +17,7 @@ const getQuestionAnswer = () => {
   const sign = car(operation);
   const action = cdr(operation);
   const question = `${first} ${sign} ${second}`;
-  const correctAnswer = action(first, second);
+  const correctAnswer = String(action(first, second));
   return cons(question, correctAnswer);
 };
 export default () => startEngine(gameDescription, getQuestionAnswer);
