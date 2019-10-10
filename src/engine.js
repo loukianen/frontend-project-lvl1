@@ -2,7 +2,6 @@ import readlineSync from 'readline-sync';
 import { car, cdr } from '@hexlet/pairs';
 
 const correctAnswersCount = 3;
-let counter = 0;
 export default (gameDescription, getQuestionAnswer) => {
   console.log();
   console.log('Welcome to the Brain Games!');
@@ -11,7 +10,7 @@ export default (gameDescription, getQuestionAnswer) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log();
-  for (; counter < correctAnswersCount; counter += 1) {
+  for (let i = 0; i < correctAnswersCount; i += 1) {
     const questionAnswer = getQuestionAnswer();
     const question = car(questionAnswer);
     const correctAnswer = cdr(questionAnswer);
@@ -21,12 +20,10 @@ export default (gameDescription, getQuestionAnswer) => {
       console.log();
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
-      break;
+      return;
     }
     console.log('Correct!');
     console.log();
   }
-  if (counter === correctAnswersCount) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  console.log(`Congratulations, ${userName}!`);
 };
