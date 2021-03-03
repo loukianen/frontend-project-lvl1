@@ -1,5 +1,6 @@
 ##
 This repository is created and maintained by Konstantin Lukyanenok as an educational project of Hexlet.
+This is a set of console minigames.
 
 ##
 
@@ -11,6 +12,7 @@ This repository is created and maintained by Konstantin Lukyanenok as an educati
 ## Setup
 ```sh
 $ npm link
+##
 https://asciinema.org/connect/eca15ed9-7d0a-48f1-877c-ec8b9ba81c46
 ```
 ## Run tests
