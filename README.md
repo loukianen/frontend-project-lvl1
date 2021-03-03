@@ -15,7 +15,7 @@ $ npm link
 ```
 https://asciinema.org/connect/eca15ed9-7d0a-48f1-877c-ec8b9ba81c46
 
-## Run tests
+## Run linter
 ```sh
 $ make lint
 ```
